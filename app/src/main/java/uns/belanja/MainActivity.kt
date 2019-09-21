@@ -6,12 +6,12 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
 import uns.belanja.adapter.ListProductAdapter
-import uns.belanja.model.Products
-import uns.belanja.model.ProductsData
+import uns.belanja.data.model.Product
+import uns.belanja.data.model.ProductsData
 
 class MainActivity : AppCompatActivity() {
 
-    private var list: ArrayList<Products> = arrayListOf()
+    private var list: ArrayList<Product> = arrayListOf()
     private lateinit var listProductAdapter: ListProductAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
     private fun setListClickAction(){
         listProductAdapter.setOnItemClickCallback(
             object : ListProductAdapter.OnItemClickCallback{
-                override fun onItemClick(data: Products) {
+                override fun onItemClick(data: Product) {
                     val manageDetailIntent = Intent(this@MainActivity,
                         DetailProductActivity::class.java).apply{
                         putExtra(DetailProductActivity.EXTRA_NAME, data.name)
